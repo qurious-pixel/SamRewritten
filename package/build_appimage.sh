@@ -7,9 +7,11 @@ if [ ! -f ../bin/samrewritten ]; then
     popd
 fi
 
+export LINUXDEPLOY="linuxdeploy-x86_64.AppImage --appimage-extract-and-run"
+
 rm -rf AppDir
-chmod +x linuxdeploy-x86_64.AppImage
-./linuxdeploy-x86_64.AppImage --appimage-extract-and-run --appdir AppDir
+chmod +x $LINUXDEPLOY
+./$LINUXDEPLOY --appdir AppDir
 grep -v Icon samrewritten.desktop > AppDir/myapp.desktop
 echo Icon=myapp >> AppDir/myapp.desktop
 cp ../assets/icon_256.png AppDir/myapp.png
@@ -30,4 +32,4 @@ cp ../bin/samrewritten AppDir/usr/bin
 cp ../bin/libsteam_api.so AppDir/usr/lib
 cp ../assets/icon_256.png AppDir/usr/assets/
 
-LD_LIBRARY_PATH=AppDir/usr/lib ./linuxdeploy-x86_64.AppImage --appdir AppDir --exclude-library=libgmodule-2.0 --output appimage
+LD_LIBRARY_PATH=AppDir/usr/lib ./$LINUXDEPLOY --appdir AppDir --exclude-library=libgmodule-2.0 --output appimage
