@@ -32,6 +32,9 @@ cp -r ../glade AppDir/usr
 cp ../bin/samrewritten AppDir/usr/bin
 cp ../bin/libsteam_api.so AppDir/usr/lib
 cp ../assets/icon_256.png AppDir/usr/assets/
-rm AppDir/usr/lib/{libglib-2.0.so.0,libgmodule-2.0.so.0}
 
 LD_LIBRARY_PATH=AppDir/usr/lib $LINUXDEPLOY-plugin-appimage --appdir AppDir
+rm AppDir/usr/lib/{libglib-2.0.so.0,libgmodule-2.0.so.0}
+
+$LINUXDEPLOY --appdir AppDir
+rm -rf squashfs-root
