@@ -12,7 +12,7 @@ export LINUXDEPLOY="squashfs-root/usr/bin/linuxdeploy"
 rm -rf AppDir
 chmod +x linuxdeploy-x86_64.AppImage
 ./linuxdeploy-x86_64.AppImage --appimage-extract
-./$LINUXDEPLOY --appdir AppDir
+$LINUXDEPLOY --appdir AppDir
 grep -v Icon samrewritten.desktop > AppDir/myapp.desktop
 echo Icon=myapp >> AppDir/myapp.desktop
 cp ../assets/icon_256.png AppDir/myapp.png
@@ -34,4 +34,4 @@ cp ../bin/libsteam_api.so AppDir/usr/lib
 cp ../assets/icon_256.png AppDir/usr/assets/
 rm AppDir/usr/lib/{libglib-2.0.so.0,libgmodule-2.0.so.0}
 
-LD_LIBRARY_PATH=AppDir/usr/lib ./$LINUXDEPLOY-plugin-appimage --appdir AppDir
+LD_LIBRARY_PATH=AppDir/usr/lib $LINUXDEPLOY-plugin-appimage --appdir AppDir
