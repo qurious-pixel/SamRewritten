@@ -28,7 +28,7 @@ jobs:
     - run: sudo make install
     - run: make clean
     - run: which samrewritten
-    - run: package/build_appimage.sh
+    - run: cd package && build_appimage.sh
     - name: Upload artifact
       uses: actions/upload-artifact@v3
       with:
