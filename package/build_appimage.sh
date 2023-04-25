@@ -10,7 +10,7 @@ fi
 export LINUXDEPLOY="linuxdeploy-x86_64.AppImage --appimage-extract-and-run"
 
 rm -rf AppDir
-chmod +x $LINUXDEPLOY
+chmod +x ${LINUXDEPLOY%%--*}
 ./$LINUXDEPLOY --appdir AppDir
 grep -v Icon samrewritten.desktop > AppDir/myapp.desktop
 echo Icon=myapp >> AppDir/myapp.desktop
