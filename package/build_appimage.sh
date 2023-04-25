@@ -8,6 +8,7 @@ if [ ! -f ../bin/samrewritten ]; then
 fi
 
 rm -rf AppDir
+chmod +x linuxdeploy-x86_64.AppImage
 ./linuxdeploy-x86_64.AppImage --appdir AppDir
 grep -v Icon samrewritten.desktop > AppDir/myapp.desktop
 echo Icon=myapp >> AppDir/myapp.desktop
